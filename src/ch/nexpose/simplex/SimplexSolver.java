@@ -16,8 +16,9 @@ public class SimplexSolver {
     private String[] head;
     private String[] side;
 
-    public Double solve(SimplexProblem problem)
+    public Double solve(SimplexProblem aSimplexProblem)
     {
+      SimplexSolverDataHolder problem = SimplexSolverDataHolder.create(aSimplexProblem);
         //equals
         problem.convertEqualsConstraints();
 

@@ -6,6 +6,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import ch.nexpose.simplex.CsvReader;
 import ch.nexpose.simplex.Equation;
 import ch.nexpose.simplex.SimplexProblem;
 import ch.nexpose.simplex.SimplexSolver;
@@ -35,8 +36,7 @@ public class Main {
         /*double[] shifted = */Equation.shift(new double[]{7, -5, 32}, 1);
 
         //create new problem
-        SimplexProblem p = new SimplexProblem();
-        p.parse(contents);
+        SimplexProblem p = CsvReader.parse(contents);
 
         //solve problem
         SimplexSolver solver = new SimplexSolver();

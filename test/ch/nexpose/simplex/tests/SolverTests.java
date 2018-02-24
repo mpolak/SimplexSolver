@@ -7,16 +7,18 @@ package ch.nexpose.simplex.tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import ch.nexpose.simplex.SimplexProblem;
-import ch.nexpose.simplex.SimplexSolver;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import ch.nexpose.simplex.CsvReader;
+import ch.nexpose.simplex.SimplexProblem;
+import ch.nexpose.simplex.SimplexSolver;
 
 public class SolverTests {
 
@@ -46,8 +48,7 @@ public class SolverTests {
 
     @Test
     public void basicExampleTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("BasicExample"));
+        SimplexProblem p = CsvReader.parse(readAllText("BasicExample"));
 
         double result = solver.solve(p);
         double expected = 180;
@@ -57,8 +58,7 @@ public class SolverTests {
 
     @Test
     public void infiniteSolutionsTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("InfiniteSolutions"));
+        SimplexProblem p = CsvReader.parse(readAllText("InfiniteSolutions"));
 
         double result = solver.solve(p);
         assertTrue(Double.isInfinite(result));
@@ -66,8 +66,7 @@ public class SolverTests {
 
     @Test
     public void landWirtschaftTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("Landwirtschaft"));
+        SimplexProblem p = CsvReader.parse(readAllText("Landwirtschaft"));
 
         double result = solver.solve(p);
         double expected = 5400;
@@ -77,8 +76,7 @@ public class SolverTests {
 
     @Test
     public void negSchlupfTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("NegSchlupf"));
+        SimplexProblem p = CsvReader.parse(readAllText("NegSchlupf"));
 
         double result = solver.solve(p);
         double expected = 86;
@@ -88,8 +86,7 @@ public class SolverTests {
 
     @Test
     public void nichtNegativiteatTest1() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("NichtNegativitaet_1"));
+        SimplexProblem p = CsvReader.parse(readAllText("NichtNegativitaet_1"));
 
         Double result = solver.solve(p);
         Double expected = Double.NaN;
@@ -99,8 +96,7 @@ public class SolverTests {
 
     @Test
     public void nichtNegativiteatTest2() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("NichtNegativitaet_2"));
+        SimplexProblem p = CsvReader.parse(readAllText("NichtNegativitaet_2"));
 
         Double result = solver.solve(p);
         double expected = 10;
@@ -110,8 +106,7 @@ public class SolverTests {
 
     @Test
     public void zweiSeafteTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("ZweiSaefte"));
+        SimplexProblem p = CsvReader.parse(readAllText("ZweiSaefte"));
 
         double result = solver.solve(p);
         double expected = 506.66666666666663;
@@ -121,8 +116,7 @@ public class SolverTests {
 
     @Test
     public void markusTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("MarkusTest"));
+        SimplexProblem p = CsvReader.parse(readAllText("MarkusTest"));
 
         double result = solver.solve(p);
         double expected = 110;
@@ -132,8 +126,7 @@ public class SolverTests {
 
     @Test
     public void minimizeTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("MinimizeTest"));
+        SimplexProblem p = CsvReader.parse(readAllText("MinimizeTest"));
 
         double result = solver.solve(p);
         double expected = 106.4;
@@ -143,8 +136,7 @@ public class SolverTests {
 
     @Test
     public void eisenBahnTest() {
-        SimplexProblem p = new SimplexProblem();
-        p.parse(readAllText("Eisenbahn"));
+        SimplexProblem p = CsvReader.parse(readAllText("Eisenbahn"));
 
         double result = solver.solve(p);
         double expected = 191;
