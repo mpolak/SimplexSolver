@@ -2,11 +2,6 @@ package ch.nexpose.simplex;
 
 import ch.nexpose.simplex.types.ConstraintType;
 import ch.nexpose.simplex.types.OptimisationType;
-import com.sun.deploy.util.ArrayUtil;
-
-import java.util.Arrays;
-
-import static ch.nexpose.simplex.SimplexUtil.addHelperVar;
 
 /**
  * Created by cansik on 22/11/15.

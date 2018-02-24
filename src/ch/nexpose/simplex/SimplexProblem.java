@@ -1,13 +1,10 @@
 package ch.nexpose.simplex;
 
-import ch.nexpose.simplex.types.ConstraintType;
-import ch.nexpose.simplex.types.OptimisationType;
-import com.sun.xml.internal.ws.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import ch.nexpose.simplex.types.ConstraintType;
+import ch.nexpose.simplex.types.OptimisationType;
 
 /**
  * Created by cansik on 22/11/15.
@@ -21,6 +18,15 @@ public class SimplexProblem {
     {
     }
 
+    private static String _capitalize(String name) {
+    if (name == null || name.length() == 0) {
+            return name;
+        }
+        char chars[] = name.toCharArray();
+        chars[0] = Character.toUpperCase(chars[0]);
+        return new String(chars);
+     }
+    
     public void parse(String data)
     {
         int j = 0;
@@ -38,7 +44,7 @@ public class SimplexProblem {
         constraints = new SimplexConstraint[amountConstraints];
 
         //read type
-        optimisationType = OptimisationType.valueOf(StringUtils.capitalize(values[j++]));
+        optimisationType = OptimisationType.valueOf(_capitalize(values[j++]));
 
         //read coefficients + d value
         for(int i = 0; i < amountVariables + 1; i++)
