@@ -16,7 +16,7 @@ public class SimplexSolver {
     private String[] head;
     private String[] side;
 
-    public Double solve(SimplexProblem aSimplexProblem)
+    public double[] solveExtended(SimplexProblem aSimplexProblem)
     {
       SimplexSolverDataHolder problem = SimplexSolverDataHolder.create(aSimplexProblem);
         //equals
@@ -78,26 +78,39 @@ public class SimplexSolver {
                 return null;
             }
         }
-
-        System.out.println();
-
-        //solve head functions
-        for (int i = 0; i < head.length; i++) {
-            String xName = "x" + (i + 1);
-            int index = getIndexOf(xName);
-            System.out.println(xName + "\t= " + schema[index][cIndex]);
-        }
-
+        
         if(negCCount > 0)
         {
             schema[aimIndex][cIndex] *= -1;
         }
 
+        System.out.println();
+
+        double[] result = new double[head.length + 1];
+        result[0] = schema[aimIndex][cIndex];
+        //solve head functions
+        for (int i = 0; i < head.length; i++) {
+            String xName = "x" + (i + 1);
+            int index = getIndexOf(xName);
+            double v = schema[index][cIndex];
+            result[i + 1] = v;
+            System.out.println(xName + "\t= " + v);
+        }
+
+        
+
         //show result
         System.out.println("Result: " + schema[aimIndex][cIndex]);
         System.out.println();
 
-        return schema[aimIndex][cIndex];
+        return result;
+    }
+    
+    public Double solve(SimplexProblem aSimplexProblem) {
+      
+      double[] values = solveExtended(aSimplexProblem);
+      Double result = values != null ? values[0] : null;
+      return result;
     }
 
     private int getNegativeCCount()
