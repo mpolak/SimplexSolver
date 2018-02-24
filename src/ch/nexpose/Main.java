@@ -1,14 +1,14 @@
 package ch.nexpose;
 
-import ch.nexpose.simplex.Equation;
-import ch.nexpose.simplex.SimplexProblem;
-import ch.nexpose.simplex.SimplexSolver;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import ch.nexpose.simplex.Equation;
+import ch.nexpose.simplex.SimplexProblem;
+import ch.nexpose.simplex.SimplexSolver;
 
 public class Main {
 
@@ -30,9 +30,9 @@ public class Main {
         double[] eq = new double[] { -40, -120, 2400 };
         double[] x1 = new double[] { -1, -1, 40 };
 
-        double[] solution = Equation.plugIn(eq, x1, 0);
+        /*double[] solution = */Equation.plugIn(eq, x1, 0);
 
-        double[] shifted = Equation.shift(new double[]{7, -5, 32}, 1);
+        /*double[] shifted = */Equation.shift(new double[]{7, -5, 32}, 1);
 
         //create new problem
         SimplexProblem p = new SimplexProblem();

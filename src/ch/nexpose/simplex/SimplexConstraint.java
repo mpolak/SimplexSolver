@@ -2,9 +2,6 @@ package ch.nexpose.simplex;
 
 import ch.nexpose.simplex.types.ConstraintType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by cansik on 22/11/15.
  */

@@ -206,11 +206,6 @@ public class SimplexSolver {
         return null;
     }
 
-    private void printSchema()
-    {
-        printSchema("Schema");
-    }
-
     private void swapVariableName(int s, int h) {
         String tmp = side[s];
         side[s] = head[h];
